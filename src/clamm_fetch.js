@@ -19,15 +19,14 @@ const JSONToFile = (obj, filename) =>
     writeFileSync(`results/${filename}.json`, JSON.stringify(obj, null, 2));
 
 const main = async () => {
-
     // Set timestamp
     const timestamp = '2024-05-11T00:00:00Z';
 
     // UNI Contract Address
-    const poolAddress = "0x1d42064fc4beb5f8aaf85f4617ae8b3b5b8bd801";
+    const poolAddress = "0x360b9726186C0F62cc719450685ce70280774Dc8";
     const NFTAddress = "0xC36442b4a4522E871399CD717aBDD847Ab11FE88";
-    const NFTid = 720499;
-    const ownerAddress = "0x48b62eac0230f474ae109de0e085d4608b4b6400";
+    const NFTid = 683644;
+    const ownerAddress = "0xc532e8d1aba3ca8daea0f303b443d36b10bf47d4";
 
     const startTime = performance.now()
 
@@ -108,7 +107,7 @@ const main = async () => {
 
     const formatted = {tick:ethers.fromTwos(ethers.dataSlice(data[0].result,61,64),24).toString(),
         liquidity:ethers.toBigInt(ethers.dataSlice(data[1].result,224,256)).toString(),
-        owner:ethers.dataSlice(data[2].result,16)}
+        owner:ethers.dataSlice(data[2].result,12)}
 
     JSONToFile(formatted, 'clamm_results');
 };
